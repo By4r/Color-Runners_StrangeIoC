@@ -33,7 +33,12 @@ namespace Runtime.Views.Player
 
         #region Private Variables
 
-        [ShowInInspector] private bool _isReadyToMove, _isReadyToPlay;
+        private bool _isReadyToMove = true;
+            
+        private bool _isReadyToPlay = true;
+
+
+        //[ShowInInspector] private bool _isReadyToMove, _isReadyToPlay;
         [ShowInInspector] private float _xValue;
 
         private float2 _clampValues;
@@ -103,7 +108,8 @@ namespace Runtime.Views.Player
         private void MovePlayer()
         {
             var velocity = rigidbody.velocity;
-            velocity = new Vector3(_xValue * _playerData.MovementData.SidewaysSpeed, velocity.y, _playerData.MovementData.ForwardSpeed);
+            velocity = new Vector3(_xValue * _playerData.MovementData.SidewaysSpeed, velocity.y,
+                _playerData.MovementData.ForwardSpeed);
             rigidbody.velocity = velocity;
             var position1 = rigidbody.position;
             Vector3 position;
