@@ -1,0 +1,31 @@
+{
+  "name": "rich-modules",
+  "version": "1.0.2",
+  "displayName": "Rich Modules",
+  "description": "Rich Modules",
+  "unity": "2019.1",
+  "unityRelease": "0b5",
+  "keywords": [],
+  "author": {
+    "name": "Rich",
+    "email": "unity@example.com",
+    "url": "https://www.unity3d.com"
+  },
+"samples": [
+    {
+      "displayName": "Rich Base Sample",
+      "description": "Useful rich samples and tests",
+      "path": "Samples~/rich-base-samples"
+    },
+    {
+      "displayName": "Rich Basic Project",
+      "description": "Useful rich Basic and Proj",
+      "path": "Samples~/rich-base-basic-project"
+    }
+],
+
+  "dependencies": {
+    "rich-base": "3.0.1"
+  },
+  "hideInEditor": false
+}

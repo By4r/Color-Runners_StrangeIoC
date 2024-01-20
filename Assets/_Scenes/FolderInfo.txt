@@ -1,0 +1,1 @@
+Project related scenes. Test scenes should be stored in Tests folder, with appropriate folder.
