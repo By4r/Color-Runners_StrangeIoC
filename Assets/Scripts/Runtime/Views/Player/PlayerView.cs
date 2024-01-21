@@ -1,6 +1,7 @@
 using DG.Tweening;
 using Rich.Base.Runtime.Abstract.View;
 using Runtime.Data.ValueObject;
+using Runtime.Enums;
 using Runtime.Key;
 using Sirenix.OdinInspector;
 using TMPro;
@@ -41,7 +42,7 @@ namespace Runtime.Views.Player
 
 
         private readonly string _stageArea = "StageArea";
-        
+
         private readonly string _gate = "Gate";
         // private readonly string _gateBlue = "Gate";
         // private readonly string _gateYellow = "Gate";
@@ -50,10 +51,18 @@ namespace Runtime.Views.Player
         private readonly string _finish = "FinishArea";
         private readonly string _miniGame = "MiniGameArea";
 
-        #endregion
+        [ShowInInspector] private PlayerColorTypes _colorType;
 
         #endregion
 
+        #endregion
+
+
+        protected override void Start()
+        {
+            base.Start();
+            //Material[] materials = renderer.materials;
+        }
 
         public void SetPlayerData(PlayerData playerData)
         {
@@ -131,20 +140,26 @@ namespace Runtime.Views.Player
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.gameObject.name == _gate)    
+            if (other.gameObject.name == _gate)
             {
                 if (other.CompareTag("BlueGate"))
                 {
+                    SetPlayerColor(PlayerColorTypes.Blue);
                     Debug.Log("BLUE GATE !");
                 }
 
                 if (other.CompareTag("YellowGate"))
                 {
+                    SetPlayerColor(PlayerColorTypes.Yellow);
+
                     Debug.Log("YELLOW  GATE !");
                 }
 
                 if (other.CompareTag("RedGate"))
                 {
+                    
+                    SetPlayerColor(PlayerColorTypes.Red);
+
                     Debug.Log("RED  GATE !");
                 }
 
@@ -163,6 +178,39 @@ namespace Runtime.Views.Player
             // {
             //     //Write the MiniGame Mechanics
             // }
+        }
+
+        /*private void SetPlayerColor(PlayerColorTypes color)
+        {
+            switch (color)
+            {
+                case PlayerColorTypes.Blue:
+                    break;
+                case PlayerColorTypes.Yellow:
+                    break;
+                case PlayerColorTypes.Red:
+                    break;
+            }
+        }*/
+
+
+        private void SetPlayerColor(PlayerColorTypes color)
+        {
+            switch (color)
+            {
+                case PlayerColorTypes.Blue:
+                    // Blue color logic
+                    renderer.materials[0].color = Color.blue;
+                    break;
+                case PlayerColorTypes.Yellow:
+                    // Yellow color logic
+                    renderer.materials[0].color = Color.yellow;
+                    break;
+                case PlayerColorTypes.Red:
+                    // Red color logic
+                    renderer.materials[0].color = Color.red;
+                    break;
+            }
         }
 
 
