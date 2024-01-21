@@ -43,6 +43,14 @@ namespace Runtime.Views.Player
 
         private readonly string _stageArea = "StageArea";
 
+        private readonly string _groundObstacle = "GroundObstacle";
+
+        private readonly string _groundRed = "GroundRed";
+        private readonly string _groundYellow = "GroundYellow";
+        private readonly string _groundBlue = "GroundBlue";
+
+
+
         private readonly string _gate = "Gate";
         // private readonly string _gateBlue = "Gate";
         // private readonly string _gateYellow = "Gate";
@@ -166,6 +174,22 @@ namespace Runtime.Views.Player
                 //onStageAreaEntered?.Invoke(transform, other.transform.parent.transform);
 
                 //IsReadyToPlay(false);
+            }
+
+
+            if (other.CompareTag(_groundRed))
+            {
+                Debug.Log("GROUND RED");
+            }
+
+            if (other.CompareTag(_groundYellow))
+            {
+                Debug.Log("GROUND YELLOW");
+            }
+            
+            if (other.CompareTag(_groundBlue))
+            {
+                Debug.Log("GROUND BLUE");
             }
 
             // if (other.CompareTag(_finish))

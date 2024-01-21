@@ -12,6 +12,10 @@ TagManager:
   - BlueGate
   - YellowGate
   - RedGate
+  - GroundObstacle
+  - GroundRed
+  - GroundYellow
+  - GroundBlue
   layers:
   - Default
   - TransparentFX
