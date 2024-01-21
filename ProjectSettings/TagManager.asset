@@ -9,6 +9,9 @@ TagManager:
   - StageArea
   - PoolArea
   - MiniGameArea
+  - BlueGate
+  - YellowGate
+  - RedGate
   layers:
   - Default
   - TransparentFX

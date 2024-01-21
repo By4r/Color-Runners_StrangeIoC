@@ -41,6 +41,12 @@ namespace Runtime.Views.Player
 
 
         private readonly string _stageArea = "StageArea";
+        
+        private readonly string _gate = "Gate";
+        // private readonly string _gateBlue = "Gate";
+        // private readonly string _gateYellow = "Gate";
+        // private readonly string _gateRed = "Gate";
+
         private readonly string _finish = "FinishArea";
         private readonly string _miniGame = "MiniGameArea";
 
@@ -103,7 +109,8 @@ namespace Runtime.Views.Player
         private void MovePlayer()
         {
             var velocity = rigidbody.velocity;
-            velocity = new Vector3(_xValue * _playerData.MovementData.SidewaysSpeed, velocity.y, _playerData.MovementData.ForwardSpeed);
+            velocity = new Vector3(_xValue * _playerData.MovementData.SidewaysSpeed, velocity.y,
+                _playerData.MovementData.ForwardSpeed);
             rigidbody.velocity = velocity;
             var position1 = rigidbody.position;
             Vector3 position;
@@ -124,23 +131,38 @@ namespace Runtime.Views.Player
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.CompareTag(_stageArea))
+            if (other.gameObject.name == _gate)    
             {
-                onStageAreaEntered?.Invoke(transform, other.transform.parent.transform);
+                if (other.CompareTag("BlueGate"))
+                {
+                    Debug.Log("BLUE GATE !");
+                }
 
-                IsReadyToPlay(false);
+                if (other.CompareTag("YellowGate"))
+                {
+                    Debug.Log("YELLOW  GATE !");
+                }
+
+                if (other.CompareTag("RedGate"))
+                {
+                    Debug.Log("RED  GATE !");
+                }
+
+                //onStageAreaEntered?.Invoke(transform, other.transform.parent.transform);
+
+                //IsReadyToPlay(false);
             }
 
-            if (other.CompareTag(_finish))
-            {
-                onFinishAreaEntered?.Invoke();
-                return;
-            }
+            // if (other.CompareTag(_finish))
+            // {
+            //     onFinishAreaEntered?.Invoke();
+            //     return;
+            // }
 
-            if (other.CompareTag(_miniGame))
-            {
-                //Write the MiniGame Mechanics
-            }
+            // if (other.CompareTag(_miniGame))
+            // {
+            //     //Write the MiniGame Mechanics
+            // }
         }
 
 
