@@ -600,7 +600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showDebug: 0
-  virtualCamera: {fileID: 0}
+  virtualCamera: {fileID: 836825511}
 --- !u!114 &836825511
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1006,7 +1006,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showDebug: 0
-  Layers: []
+  Layers:
+  - {fileID: 7532323662020382092}
+  - {fileID: 6398847138190356602}
+  - {fileID: 6612250038530809408}
 --- !u!1 &8340425777318004309
 GameObject:
   m_ObjectHideFlags: 0

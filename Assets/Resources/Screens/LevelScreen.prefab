@@ -506,9 +506,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 42ed803c68df6c74cbda56e7a269b325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _showDebug: 0
-  stageImages: []
-  levelTexts: []
+  _showDebug: 1
+  stageImages:
+  - {fileID: 4837950001364511120}
+  - {fileID: 5729893160850888512}
+  - {fileID: 7480261392054910708}
+  levelTexts:
+  - {fileID: 7282406559161290254}
+  - {fileID: 7702745728444136079}
 --- !u!1 &7282406559960353193
 GameObject:
   m_ObjectHideFlags: 0

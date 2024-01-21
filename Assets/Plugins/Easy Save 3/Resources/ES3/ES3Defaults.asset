@@ -31,21 +31,23 @@ MonoBehaviour:
     assemblyNames:
     - rich-base.runtime
     - ES3.Runtime
-    - sc.stylizedwater2.runtime
+    - Boxophobic.Utils.Editor
     - Assembly-CSharp
     - Cinemachine
     - StompyRobot.SRF
-    - rich-base.editor
-    - Boxophobic.Utils.Editor
-    - Assembly-CSharp-firstpass
-    - PPv2URPConverters
-    - StompyRobot.SRDebugger
-    - Boxophobic.PolyverseSkies.Editor
-    - Boxophobic.Utils.Scripts
-    - StompyRobot.SRDebugger.Editor
     - sc.stylizedwater2.editor
+    - rich-base.editor
+    - Assembly-CSharp-firstpass
+    - Boxophobic.Utils.Scripts
+    - PPv2URPConverters
+    - sc.stylizedwater2.runtime
+    - Sirenix.OdinInspector.CompatibilityLayer.Editor
+    - StompyRobot.SRDebugger
+    - StompyRobot.SRDebugger.Editor
     - StompyRobot.SRF.Editor
+    - Sirenix.OdinInspector.CompatibilityLayer
     - Boxophobic.PolyverseSkies.Runtime
+    - Boxophobic.PolyverseSkies.Editor
     - Boxophobic.PolyverseSkies.Scripts
     - Sirenix.OdinInspector.Modules.UnityMathematics
     showAdvancedSettings: 0

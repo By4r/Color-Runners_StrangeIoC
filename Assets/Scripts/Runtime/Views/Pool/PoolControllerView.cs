@@ -14,7 +14,7 @@ namespace Runtime.Views.Pool
         public byte StageValue;
 
 
-        [SerializeField] private List<DOTweenAnimation> tweens = new List<DOTweenAnimation>();
+        //[SerializeField] private List<DOTweenAnimation> tweens = new List<DOTweenAnimation>();
         [SerializeField] private TextMeshPro poolText;
         [SerializeField] private new Renderer renderer;
         [SerializeField] private float3 poolAfterColor = new float3(0.1607843f, 0.3144797f, 0.6039216f);
@@ -36,14 +36,14 @@ namespace Runtime.Views.Pool
             _data = poolData;
         }
 
-        public void OnActivateTweens(byte stageValue)
-        {
-            if (stageValue != StageValue) return;
-            foreach (var tween in tweens)
-            {
-                tween.DOPlay();
-            }
-        }
+        // public void OnActivateTweens(byte stageValue)
+        // {
+        //     if (stageValue != StageValue) return;
+        //     foreach (var tween in tweens)
+        //     {
+        //         tween.DOPlay();
+        //     }
+        // }
 
         public void OnChangePoolColor(byte stageValue)
         {

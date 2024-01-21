@@ -33,7 +33,7 @@ namespace Runtime.Context
             {
                 IgnoreHistory = false,
                 LayerIndex = 0,
-                PanelKey = "LevelScreen"
+                PanelKey = "StartScreen"
             });
         }
     }

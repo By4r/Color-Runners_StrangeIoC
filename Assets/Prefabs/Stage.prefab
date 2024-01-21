@@ -2927,8 +2927,8 @@ MonoBehaviour:
   _showDebug: 0
   StageValue: 0
   tweens: []
-  poolText: {fileID: 0}
-  renderer: {fileID: 0}
+  poolText: {fileID: 1819977566778375030}
+  renderer: {fileID: 9184225053601131157}
   poolAfterColor:
     x: 0.1607843
     y: 0.3144797
