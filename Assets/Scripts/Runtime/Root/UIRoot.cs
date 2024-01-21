@@ -5,5 +5,6 @@ namespace Runtime.Root
 {
     public class UIRoot : RichMVCContextRoot<UIContext>
     {
+        
     }
 }
