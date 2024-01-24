@@ -70,8 +70,6 @@ namespace Runtime.Context
             commandBinder.Bind(_playerSignals.onForceCommand).To<ForceBallsToPoolCommand>();
             commandBinder.Bind(_playerSignals.onStageAreaSuccessful).To<OnStageAreaSuccessfulCommand>();
             
-            
-            commandBinder.Bind(_stackSignals.onAddStack).To<ItemAdderOnStackCommand>();
             commandBinder.Bind(_stackSignals.onStackMover).To<StackMoverCommand>();
         }
 

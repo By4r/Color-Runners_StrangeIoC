@@ -13,40 +13,31 @@ namespace Runtime.Mediators.Stack
 {
     public class StackMediator : MediatorLite
     {
-        
         [Inject] public StackView StackView { get; set; }
-        
-        [Inject] public IStackModel model { get; set; }
-        
-        [Inject] public StackSignals StackSignals { get; set; }
-        
-        //[Inject] public PlayerView View { get; set; }
-        // [Inject] public IPlayerModel Model { get; set; }
-        // [Inject] public InputSignals InputSignals { get; set; }
-        // [Inject] public PlayerSignals PlayerSignals { get; set; }
-        // [Inject] public CoreGameSignals CoreGameSignals { get; set; }
 
-        //[Inject] public UISignals UISignals { get; set; }
+        [Inject] public IStackModel model { get; set; }
+
+        [Inject] public StackSignals StackSignals { get; set; }
 
         public override void OnRegister()
         {
             base.OnRegister();
             StackSignals.onStackFollowPlayer.AddListener(StackView.OnStackMove);
-            StackSignals.onInteractionCollectable.AddListener(StackView.OnInteractionCollectable);
+            StackSignals.onStackCollectable.AddListener(StackView.OnStackCollectable);
 
             StackView.onInteractCollect += OnInteractCollect;
-
         }
-        
+
 
         public override void OnRemove()
         {
             base.OnRemove();
-            StackSignals.onInteractionCollectable.RemoveListener(StackView.OnInteractionCollectable);
+
             StackSignals.onStackFollowPlayer.RemoveListener(StackView.OnStackMove);
+            StackSignals.onStackCollectable.RemoveListener(StackView.OnStackCollectable);
+
 
             StackView.onInteractCollect -= OnInteractCollect;
-
         }
 
         private void OnInteractCollect()

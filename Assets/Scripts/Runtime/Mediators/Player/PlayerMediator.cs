@@ -13,15 +13,13 @@ namespace Runtime.Mediators.Player
     public class PlayerMediator : MediatorLite
     {
         [Inject] public PlayerView View { get; set; }
-
-        //[Inject] public StackView StackView { get; set; }
         [Inject] public IPlayerModel Model { get; set; }
         [Inject] public InputSignals InputSignals { get; set; }
         [Inject] public PlayerSignals PlayerSignals { get; set; }
         [Inject] public CoreGameSignals CoreGameSignals { get; set; }
 
         [Inject] public StackSignals StackSignals { get; set; }
-        
+
         [Inject] public UISignals UISignals { get; set; }
 
         public override void OnRegister()
@@ -32,14 +30,17 @@ namespace Runtime.Mediators.Player
             InputSignals.onInputTaken.AddListener(View.OnInputTaken);
             PlayerSignals.onStageAreaSuccessful.AddListener(StageAreaSuccessful);
             UISignals.onPlay.AddListener(OnPlay);
-
             View.onReset += OnReset;
             View.onStageAreaEntered += OnStageAreaEntered;
             View.onFinishAreaEntered += OnFinishAreaEntered;
-            //View.onPlayerInteract += OnPlayerInterct;
             View.onCollectableInteract += OnCollectableInteract;
-            View.onCollectableInteraction += OnCollectableInteraction;
             View.onSetPosAction += SetStackPos;
+            View.onStackCollectableAction += OnSendCollactableObject;
+        }
+
+        private void OnSendCollactableObject(GameObject collectableObject)
+        {
+            StackSignals.onStackCollectable?.Dispatch(collectableObject);
         }
 
         private void OnCollectableInteract(GameObject collectableObject)
@@ -88,7 +89,7 @@ namespace Runtime.Mediators.Player
         {
             StackSignals.onStackFollowPlayer?.Dispatch(pos);
         }
-        
+
 
         private void StageAreaSuccessful(byte obj)
         {
@@ -117,21 +118,14 @@ namespace Runtime.Mediators.Player
             InputSignals.onInputTaken.RemoveListener(View.OnInputTaken);
             PlayerSignals.onStageAreaSuccessful.RemoveListener(StageAreaSuccessful);
             UISignals.onPlay.RemoveListener(OnPlay);
-
             View.onReset -= OnReset;
             View.onStageAreaEntered -= OnStageAreaEntered;
             View.onFinishAreaEntered -= OnFinishAreaEntered;
-            //View.onPlayerInteract -= OnPlayerInterct;
             View.onCollectableInteract -= OnCollectableInteract;
-            View.onCollectableInteraction -= OnCollectableInteraction;
-
-
+            View.onSetPosAction -= SetStackPos;
+            View.onStackCollectableAction -= OnSendCollactableObject;
         }
 
-        private void OnCollectableInteraction()
-        {
-            StackSignals.onAddStack.Dispatch();
-        }
 
         public override void OnEnabled()
         {

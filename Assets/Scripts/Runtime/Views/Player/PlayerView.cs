@@ -17,13 +17,10 @@ namespace Runtime.Views.Player
     {
         #region Self Variables
 
-        [Inject] private StackSignals StackSignal { get; set; }
-        
         #region Public Variables
 
-        public UnityAction onCollectableInteraction = delegate { };
+        public UnityAction<GameObject> onStackCollectableAction = delegate { };
 
-        public UnityAction onPlayerInteract = delegate { };
         public UnityAction<GameObject> onCollectableInteract = delegate { };
         public UnityAction onReset = delegate { };
         public UnityAction<Transform, Transform> onStageAreaEntered = delegate { };
@@ -61,11 +58,7 @@ namespace Runtime.Views.Player
         private readonly string _groundBlue = "GroundBlue";
 
 
-
         private readonly string _gate = "Gate";
-        // private readonly string _gateBlue = "Gate";
-        // private readonly string _gateYellow = "Gate";
-        // private readonly string _gateRed = "Gate";
 
         private readonly string _finish = "FinishArea";
         private readonly string _miniGame = "MiniGameArea";
@@ -76,26 +69,16 @@ namespace Runtime.Views.Player
 
         #endregion
 
-
-        protected override void Start()
-        {
-            base.Start();
-            //Material[] materials = renderer.materials;
-            
-            var stackView = FindObjectOfType<StackView>();
-        }
-
         public void SetPlayerData(PlayerData playerData)
         {
             _playerData = playerData;
         }
-        
+
         internal void SetStackPos()
         {
             var position = transform.position;
             Vector2 pos = new Vector2(position.x, position.z);
             onSetPosAction?.Invoke(pos);
-            //StackSignal.onStackFollowPlayer?.Dispatch(pos);
         }
 
         public void OnInputDragged(HorizontalInputParams horizontalInputParams)
@@ -120,7 +103,7 @@ namespace Runtime.Views.Player
             {
                 SetStackPos();
             }
-            
+
             if (!_isReadyToPlay)
             {
                 StopPlayer();
@@ -174,38 +157,17 @@ namespace Runtime.Views.Player
 
         private void OnTriggerEnter(Collider other)
         {
-            
             Debug.Log("ON TRIGGER ENTER !");
-            
-            
+
+
             if (other.gameObject.name == _collectable)
             {
-                // Send the game object to the StackView
-                //StackView.OnInteractionCollectable(other.gameObject);
-                
-                onCollectableInteraction?.Invoke();
-                
-                //onCollectableInteract?.Invoke(other.transform.gameObject);
-                
-                //onPlayerInteract?.Invoke();
-                
-                //StackView.onInteractCollect?.Invoke();
+                onStackCollectableAction?.Invoke(other.transform.gameObject);
                 
                 Debug.Log("COLLECTABLE");
             }
-            
-            // if (other.gameObject.name == _collectable)
-            // {
-            //     //onAddStack?.invoke(other.gameObject);
-            //     //StackSignals.onInteractionCollectable.Dispatch(other.transform.gameObject);
-            //
-            //
-            //     //StackSignals.onInteractionCollectable.Dispatch(other.transform.parent.gameObject);
-            //     Debug.Log("COLLECTABLE");
-            // }
-            
-            
-            
+
+
             if (other.gameObject.name == _gate)
             {
                 if (other.CompareTag("BlueGate"))
@@ -223,7 +185,6 @@ namespace Runtime.Views.Player
 
                 if (other.CompareTag("RedGate"))
                 {
-                    
                     SetPlayerColor(PlayerColorTypes.Red);
 
                     Debug.Log("RED  GATE !");
@@ -244,7 +205,7 @@ namespace Runtime.Views.Player
             {
                 Debug.Log("GROUND YELLOW");
             }
-            
+
             if (other.CompareTag(_groundBlue))
             {
                 Debug.Log("GROUND BLUE");
@@ -262,19 +223,6 @@ namespace Runtime.Views.Player
             // }
         }
 
-        /*private void SetPlayerColor(PlayerColorTypes color)
-        {
-            switch (color)
-            {
-                case PlayerColorTypes.Blue:
-                    break;
-                case PlayerColorTypes.Yellow:
-                    break;
-                case PlayerColorTypes.Red:
-                    break;
-            }
-        }*/
-        
 
         private void SetPlayerColor(PlayerColorTypes color)
         {

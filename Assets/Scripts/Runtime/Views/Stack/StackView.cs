@@ -10,8 +10,7 @@ namespace Runtime.Views.Stack
     public class StackView : RichView
     {
         #region Public Variables
-
-        //public UnityAction<GameObject> OnInteractionCollectable = delegate { };
+        
         public UnityAction onInteractCollect = delegate { };
 
         #endregion
@@ -19,7 +18,6 @@ namespace Runtime.Views.Stack
         #region Serialized Variables
 
         [SerializeField] internal GameObject collectableStickMan;
-        [SerializeField] internal int numberOfCollectablesToSpawn = 10;
 
         #endregion
 
@@ -30,16 +28,7 @@ namespace Runtime.Views.Stack
         private List<GameObject> _inactiveCollectables = new List<GameObject>();
 
         [Inject] public StackSignals StackSignals { get; set; }
-        
-        //private readonly string _stackDataPath = "Data/CD_Stack";
-
         #endregion
-
-        protected override void Start()
-        {
-            base.Start();
-            PrepareCollectableStickMen(numberOfCollectablesToSpawn);
-        }
 
         public void SetStackData(StackData stackData)
         {
@@ -55,51 +44,13 @@ namespace Runtime.Views.Stack
             }
         }
         
-        // Method to be called when the collectable is interacted with.
-        internal void OnInteractionCollectable()
-        {
-            Debug.Log("ON INTERACTION COLLECTABLE WORKED !");
-
-            if (_inactiveCollectables.Count > 0)
-            {
-                GameObject inactiveCollectable = _inactiveCollectables[0];
-                _inactiveCollectables.RemoveAt(0); // Remove the object from the list
-
-                AddStack(inactiveCollectable);
-            }
-            else
-            {
-                Debug.LogWarning("No inactive collectables available.");
-            }
-        }
         
         internal void OnStackMove(Vector2 direction)
         {
-            transform.position = new Vector3(0, gameObject.transform.position.y, direction.y + -1f); // +2f
+            transform.position = new Vector3(0, gameObject.transform.position.y, direction.y -1f); // +2f -1f
             if (gameObject.transform.childCount > 0)
             {
                 MoveStack(direction.x, _collectableStack);
-                //_stackMoverCommand.Execute(direction.x, _collectableStack);
-            }
-        }
-        
-        private void AddStack(GameObject collectableGameObject)
-        {
-            if (_collectableStack.Count <= 0)
-            {
-                _collectableStack.Add(collectableGameObject);
-                collectableGameObject.transform.SetParent(this.transform);
-                collectableGameObject.transform.localPosition = new Vector3(0, 1f, 0.335f);
-                collectableGameObject.SetActive(true);
-            }
-            else
-            {
-                collectableGameObject.transform.SetParent(this.transform);
-                Vector3 newPos = _collectableStack[_collectableStack.Count - 1].transform.localPosition;
-                newPos.z += 1.0f; // Change this to your desired offset
-                collectableGameObject.transform.localPosition = newPos;
-                _collectableStack.Add(collectableGameObject);
-                collectableGameObject.SetActive(true);
             }
         }
         
@@ -119,6 +70,35 @@ namespace Runtime.Views.Stack
                 pos.x = collectableStack[i - 1].transform.localPosition.x;
                 float direct = Mathf.Lerp(collectableStack[i].transform.localPosition.x, pos.x, _data.LerpSpeed);
                 collectableStack[i].transform.localPosition = new Vector3(direct, pos.y, pos.z);
+            }
+        }
+        
+        
+        internal void OnStackCollectable(GameObject collectableGameObject)
+        {
+            Debug.Log("ON INTERACTION COLLECTABLE WORKED !");
+            AddStack(collectableGameObject);
+        }
+        
+        private void AddStack(GameObject collectableGameObject)
+        {
+            if (_collectableStack.Count <= 0)
+            {
+                _collectableStack.Add(collectableGameObject);
+                //_collectableStack.Add(collectableGameObject);
+                //_collectableManager.CollectableAnimRun();
+                collectableGameObject.transform.SetParent(this.transform);
+                collectableGameObject.transform.localPosition = new Vector3(0, 1f, 0.335f); // y: 1f
+            }
+            else
+            {
+                collectableGameObject.transform.SetParent(this.transform);
+                Vector3 newPos = _collectableStack[^1].transform.localPosition;
+                newPos.z += _data.CollectableOffsetInStack;
+                collectableGameObject.transform.localPosition = newPos;
+                _collectableStack.Add(collectableGameObject);
+                //_collectableManager.CollectableAnimRun();
+
             }
         }
     }
