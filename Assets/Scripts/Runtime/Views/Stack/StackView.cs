@@ -73,6 +73,16 @@ namespace Runtime.Views.Stack
             }
         }
         
+        internal void OnStackMove(Vector2 direction)
+        {
+            transform.position = new Vector3(0, gameObject.transform.position.y, direction.y + -1f); // +2f
+            if (gameObject.transform.childCount > 0)
+            {
+                MoveStack(direction.x, _collectableStack);
+                //_stackMoverCommand.Execute(direction.x, _collectableStack);
+            }
+        }
+        
         private void AddStack(GameObject collectableGameObject)
         {
             if (_collectableStack.Count <= 0)
@@ -93,5 +103,23 @@ namespace Runtime.Views.Stack
             }
         }
         
+        public void MoveStack(float directionX, List<GameObject> collectableStack)
+        {
+            float direct = Mathf.Lerp(collectableStack[0].transform.localPosition.x, directionX,
+                _data.LerpSpeed);
+            collectableStack[0].transform.localPosition = new Vector3(direct, 1f, 0.335f);
+            StackItemsLerpMove(collectableStack);
+        }
+
+        private void StackItemsLerpMove(List<GameObject> collectableStack)
+        {
+            for (int i = 1; i < collectableStack.Count; i++)
+            {
+                Vector3 pos = collectableStack[i].transform.localPosition;
+                pos.x = collectableStack[i - 1].transform.localPosition.x;
+                float direct = Mathf.Lerp(collectableStack[i].transform.localPosition.x, pos.x, _data.LerpSpeed);
+                collectableStack[i].transform.localPosition = new Vector3(direct, pos.y, pos.z);
+            }
+        }
     }
 }

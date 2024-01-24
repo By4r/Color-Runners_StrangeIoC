@@ -6,6 +6,7 @@ using Runtime.Views.Player;
 using Runtime.Views.Pool;
 using Runtime.Views.Stack;
 using UnityEngine;
+using Vector2 = System.Numerics.Vector2;
 
 namespace Runtime.Mediators.Player
 {
@@ -38,6 +39,7 @@ namespace Runtime.Mediators.Player
             //View.onPlayerInteract += OnPlayerInterct;
             View.onCollectableInteract += OnCollectableInteract;
             View.onCollectableInteraction += OnCollectableInteraction;
+            View.onSetPosAction += SetStackPos;
         }
 
         private void OnCollectableInteract(GameObject collectableObject)
@@ -81,6 +83,12 @@ namespace Runtime.Mediators.Player
                 }
             });
         }
+
+        private void SetStackPos(UnityEngine.Vector2 pos)
+        {
+            StackSignals.onStackFollowPlayer?.Dispatch(pos);
+        }
+        
 
         private void StageAreaSuccessful(byte obj)
         {

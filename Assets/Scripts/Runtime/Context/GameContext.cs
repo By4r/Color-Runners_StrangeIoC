@@ -72,6 +72,7 @@ namespace Runtime.Context
             
             
             commandBinder.Bind(_stackSignals.onAddStack).To<ItemAdderOnStackCommand>();
+            commandBinder.Bind(_stackSignals.onStackMover).To<StackMoverCommand>();
         }
 
         public override void Launch()

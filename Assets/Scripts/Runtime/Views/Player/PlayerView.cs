@@ -16,6 +16,8 @@ namespace Runtime.Views.Player
     public class PlayerView : RichView
     {
         #region Self Variables
+
+        [Inject] private StackSignals StackSignal { get; set; }
         
         #region Public Variables
 
@@ -26,6 +28,8 @@ namespace Runtime.Views.Player
         public UnityAction onReset = delegate { };
         public UnityAction<Transform, Transform> onStageAreaEntered = delegate { };
         public UnityAction onFinishAreaEntered = delegate { };
+
+        public UnityAction<Vector2> onSetPosAction = delegate { };
 
         #endregion
 
@@ -85,6 +89,14 @@ namespace Runtime.Views.Player
         {
             _playerData = playerData;
         }
+        
+        internal void SetStackPos()
+        {
+            var position = transform.position;
+            Vector2 pos = new Vector2(position.x, position.z);
+            onSetPosAction?.Invoke(pos);
+            //StackSignal.onStackFollowPlayer?.Dispatch(pos);
+        }
 
         public void OnInputDragged(HorizontalInputParams horizontalInputParams)
         {
@@ -104,6 +116,11 @@ namespace Runtime.Views.Player
 
         private void FixedUpdate()
         {
+            if (_isReadyToPlay)
+            {
+                SetStackPos();
+            }
+            
             if (!_isReadyToPlay)
             {
                 StopPlayer();
@@ -257,7 +274,7 @@ namespace Runtime.Views.Player
                     break;
             }
         }*/
-
+        
 
         private void SetPlayerColor(PlayerColorTypes color)
         {
