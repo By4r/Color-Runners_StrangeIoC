@@ -5,22 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="09bb78a6-54cd-4629-bbfc-e1cdb0cc3363" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controller/StackControllers.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controller/StackControllers/ItemAdderOnStackCommand.cs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controller/StackControllers/ItemAdderOnStackCommand.cs.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Picker3DStrangeFinal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Picker3DStrangeFinal/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Stage.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Stage.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Data/CD_Stack.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Data/CD_Stack.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Resources/Prefabs/LevelPrefabs/level 0.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Resources/Prefabs/LevelPrefabs/level 0.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Context/GameContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Context/GameContext.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Collectable.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Collectable.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controller/StackControllers/ItemAdderOnStackCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controller/StackControllers/ItemAdderOnStackCommand.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Mediators/Player/PlayerMediator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Mediators/Player/PlayerMediator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Mediators/Stack/StackMediator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Mediators/Stack/StackMediator.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Signals/StackSignals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Signals/StackSignals.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Views/Player/PlayerView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Views/Player/PlayerView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Views/Stack/StackView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Views/Stack/StackView.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/_Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/MainScene.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/enrich-base/Runtime/StrangeIoC/scripts/strange/extensions/command/api/ICommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/enrich-base/Runtime/StrangeIoC/scripts/strange/extensions/command/api/ICommand.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/enrich-base/Runtime/StrangeIoC/scripts/strange/extensions/sequencer/impl/Sequencer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/enrich-base/Runtime/StrangeIoC/scripts/strange/extensions/sequencer/impl/Sequencer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,7 +100,7 @@
       <workItem from="1705836868157" duration="5044000" />
       <workItem from="1705842848158" duration="1211000" />
       <workItem from="1706022673858" duration="1888000" />
-      <workItem from="1706079379804" duration="14475000" />
+      <workItem from="1706079379804" duration="17243000" />
     </task>
     <servers />
   </component>

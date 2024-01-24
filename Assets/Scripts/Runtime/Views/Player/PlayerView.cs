@@ -19,7 +19,7 @@ namespace Runtime.Views.Player
         
         #region Public Variables
 
-        public UnityAction<GameObject> onCollectableInteraction = delegate { };
+        public UnityAction onCollectableInteraction = delegate { };
 
         public UnityAction onPlayerInteract = delegate { };
         public UnityAction<GameObject> onCollectableInteract = delegate { };
@@ -166,7 +166,7 @@ namespace Runtime.Views.Player
                 // Send the game object to the StackView
                 //StackView.OnInteractionCollectable(other.gameObject);
                 
-                onCollectableInteraction?.Invoke(other.transform.gameObject);
+                onCollectableInteraction?.Invoke();
                 
                 //onCollectableInteract?.Invoke(other.transform.gameObject);
                 

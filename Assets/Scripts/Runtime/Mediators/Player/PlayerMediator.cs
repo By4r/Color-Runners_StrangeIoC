@@ -120,9 +120,9 @@ namespace Runtime.Mediators.Player
 
         }
 
-        private void OnCollectableInteraction(GameObject collectableGameObject)
+        private void OnCollectableInteraction()
         {
-            StackSignals.onAddStack.Dispatch(collectableGameObject);
+            StackSignals.onAddStack.Dispatch();
         }
 
         public override void OnEnabled()

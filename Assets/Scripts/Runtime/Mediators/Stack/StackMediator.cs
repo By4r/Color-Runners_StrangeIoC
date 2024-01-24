@@ -31,6 +31,9 @@ namespace Runtime.Mediators.Stack
         public override void OnRegister()
         {
             base.OnRegister();
+            
+            StackSignals.onInteractionCollectable.AddListener(StackView.OnInteractionCollectable);
+            
             //StackSignals.onInteractionCollectable.AddListener(StackView.OnInteractionCollectable);
 
             //StackView.OnInteractionCollectable += OnInteractionCollectable;
@@ -74,6 +77,8 @@ namespace Runtime.Mediators.Stack
         public override void OnRemove()
         {
             base.OnRemove();
+            StackSignals.onInteractionCollectable.RemoveListener(StackView.OnInteractionCollectable);
+
             //StackSignals.onInteractionCollectable.RemoveListener(StackView.OnInteractionCollectable);
 
             //StackView.OnInteractionCollectable -= OnInteractionCollectable;
