@@ -3,6 +3,8 @@ using Rich.Base.Runtime.Abstract.View;
 using Runtime.Data.ValueObject;
 using Runtime.Enums;
 using Runtime.Key;
+using Runtime.Signals;
+using Runtime.Views.Stack;
 using Sirenix.OdinInspector;
 using TMPro;
 using Unity.Mathematics;
@@ -14,9 +16,13 @@ namespace Runtime.Views.Player
     public class PlayerView : RichView
     {
         #region Self Variables
-
+        
         #region Public Variables
 
+        public UnityAction<GameObject> onCollectableInteraction = delegate { };
+
+        public UnityAction onPlayerInteract = delegate { };
+        public UnityAction<GameObject> onCollectableInteract = delegate { };
         public UnityAction onReset = delegate { };
         public UnityAction<Transform, Transform> onStageAreaEntered = delegate { };
         public UnityAction onFinishAreaEntered = delegate { };
@@ -40,6 +46,7 @@ namespace Runtime.Views.Player
         private float2 _clampValues;
         [ShowInInspector] private PlayerData _playerData;
 
+        private readonly string _collectable = "Collectable";
 
         private readonly string _stageArea = "StageArea";
 
@@ -70,6 +77,8 @@ namespace Runtime.Views.Player
         {
             base.Start();
             //Material[] materials = renderer.materials;
+            
+            var stackView = FindObjectOfType<StackView>();
         }
 
         public void SetPlayerData(PlayerData playerData)
@@ -148,6 +157,38 @@ namespace Runtime.Views.Player
 
         private void OnTriggerEnter(Collider other)
         {
+            
+            Debug.Log("ON TRIGGER ENTER !");
+            
+            
+            if (other.gameObject.name == _collectable)
+            {
+                // Send the game object to the StackView
+                //StackView.OnInteractionCollectable(other.gameObject);
+                
+                onCollectableInteraction?.Invoke(other.transform.gameObject);
+                
+                //onCollectableInteract?.Invoke(other.transform.gameObject);
+                
+                //onPlayerInteract?.Invoke();
+                
+                //StackView.onInteractCollect?.Invoke();
+                
+                Debug.Log("COLLECTABLE");
+            }
+            
+            // if (other.gameObject.name == _collectable)
+            // {
+            //     //onAddStack?.invoke(other.gameObject);
+            //     //StackSignals.onInteractionCollectable.Dispatch(other.transform.gameObject);
+            //
+            //
+            //     //StackSignals.onInteractionCollectable.Dispatch(other.transform.parent.gameObject);
+            //     Debug.Log("COLLECTABLE");
+            // }
+            
+            
+            
             if (other.gameObject.name == _gate)
             {
                 if (other.CompareTag("BlueGate"))

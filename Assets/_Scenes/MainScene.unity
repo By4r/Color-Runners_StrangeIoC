@@ -685,7 +685,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _showDebug: 0
-  collectableStickMan: {fileID: 0}
+  collectableStickMan: {fileID: 982969200765668337, guid: c8dab18f0c51f4540a629e299daf7790,
+    type: 3}
 --- !u!1 &1535992546
 GameObject:
   m_ObjectHideFlags: 0

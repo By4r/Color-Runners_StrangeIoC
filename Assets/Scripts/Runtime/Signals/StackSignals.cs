@@ -5,6 +5,7 @@ namespace Runtime.Signals
 {
     public class StackSignals
     {
+        public Signal<GameObject> onAddStack = new Signal<GameObject>();
         public Signal<GameObject> onInteractionATM = new Signal<GameObject>();
         public Signal<GameObject> onInteractionObstacle = new Signal<GameObject>();
         public Signal<GameObject> onInteractionCollectable = new Signal<GameObject>();

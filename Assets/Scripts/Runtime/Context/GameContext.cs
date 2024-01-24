@@ -3,18 +3,22 @@ using Rich.Base.Runtime.Extensions;
 using Runtime.Controller;
 using Runtime.Controller.LevelControllers;
 using Runtime.Controller.PlayerControllers;
+using Runtime.Controller.StackControllers;
 using Runtime.Mediators.Camera;
 using Runtime.Mediators.Input;
 using Runtime.Mediators.Player;
 using Runtime.Mediators.Pool;
+using Runtime.Mediators.Stack;
 using Runtime.Model.Input;
 using Runtime.Model.Level;
 using Runtime.Model.Player;
+using Runtime.Model.Stack;
 using Runtime.Signals;
 using Runtime.Views.Camera;
 using Runtime.Views.Input;
 using Runtime.Views.Player;
 using Runtime.Views.Pool;
+using Runtime.Views.Stack;
 
 namespace Runtime.Context
 {
@@ -25,6 +29,7 @@ namespace Runtime.Context
         private PlayerSignals _playerSignals;
         private InputSignals _inputSignals;
         private LevelSignals _levelSignals;
+        private StackSignals _stackSignals;
 
         protected override void mapBindings()
         {
@@ -36,17 +41,21 @@ namespace Runtime.Context
             _playerSignals = injectionBinder.BindCrossContextSingletonSafely<PlayerSignals>();
             _inputSignals = injectionBinder.BindCrossContextSingletonSafely<InputSignals>();
             _levelSignals = injectionBinder.BindCrossContextSingletonSafely<LevelSignals>();
+            _stackSignals = injectionBinder.BindCrossContextSingletonSafely<StackSignals>();
 
             injectionBinder.Bind<ILevelModel>().To<LevelModel>().CrossContext().ToSingleton();
             injectionBinder.Bind<IInputModel>().To<InputModel>().CrossContext().ToSingleton();
             injectionBinder.Bind<IPlayerModel>().To<PlayerModel>().CrossContext().ToSingleton();
-
+            injectionBinder.Bind<IStackModel>().To<StackModel>().CrossContext().ToSingleton();
+            
             //Mediation Bindings
-
+            
             mediationBinder.BindView<CameraView>().ToMediator<CameraMediator>();
             mediationBinder.BindView<PlayerView>().ToMediator<PlayerMediator>();
             mediationBinder.BindView<InputView>().ToMediator<InputMediator>();
             mediationBinder.BindView<PoolControllerView>().ToMediator<PoolControllerMediator>();
+            mediationBinder.BindView<StackView>().ToMediator<StackMediator>();
+            //mediationBinder.BindView<StackView>().ToMediator<PlayerMediator>();
 
             //Command Bindings
             commandBinder.Bind(_levelSignals.onInitializeLevel).To<InitializeLevelCommand>();
@@ -60,6 +69,9 @@ namespace Runtime.Context
 
             commandBinder.Bind(_playerSignals.onForceCommand).To<ForceBallsToPoolCommand>();
             commandBinder.Bind(_playerSignals.onStageAreaSuccessful).To<OnStageAreaSuccessfulCommand>();
+            
+            
+            commandBinder.Bind(_stackSignals.onAddStack).To<ItemAdderOnStackCommand>();
         }
 
         public override void Launch()

@@ -34,6 +34,7 @@
  */ 
 
 using System;
+using UnityEngine;
 
 namespace strange.extensions.command.api
 {

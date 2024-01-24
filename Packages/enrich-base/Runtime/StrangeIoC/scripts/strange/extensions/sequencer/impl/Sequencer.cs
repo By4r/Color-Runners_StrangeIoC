@@ -29,6 +29,7 @@ using strange.extensions.command.api;
 using strange.extensions.command.impl;
 using strange.framework.api;
 using strange.framework.impl;
+using UnityEngine;
 
 namespace strange.extensions.sequencer.impl
 {
