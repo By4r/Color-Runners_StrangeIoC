@@ -6,15 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="09bb78a6-54cd-4629-bbfc-e1cdb0cc3363" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Picker3DStrangeFinal/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Picker3DStrangeFinal/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Collectable.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Collectable.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Context/GameContext.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Context/GameContext.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controller/StackControllers/ItemAdderOnStackCommand.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Controller/StackControllers/ItemAdderOnStackCommand.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Mediators/Player/PlayerMediator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Mediators/Player/PlayerMediator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Mediators/Stack/StackMediator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Mediators/Stack/StackMediator.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Signals/StackSignals.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Signals/StackSignals.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Views/Player/PlayerView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Views/Player/PlayerView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Views/Stack/StackView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Views/Stack/StackView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/_Scenes/MainScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/_Scenes/MainScene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Runtime/Model/Stack/StackModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Runtime/Model/Stack/StackModel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -103,6 +96,9 @@
       <workItem from="1706022673858" duration="1888000" />
       <workItem from="1706079379804" duration="24167000" />
       <workItem from="1706103682894" duration="354000" />
+      <workItem from="1706104115224" duration="11000" />
+      <workItem from="1706108369139" duration="1517000" />
+      <workItem from="1706178341367" duration="974000" />
     </task>
     <servers />
   </component>

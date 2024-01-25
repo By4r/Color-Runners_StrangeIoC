@@ -41,6 +41,7 @@ namespace Runtime.Mediators.Player
         private void OnSendCollactableObject(GameObject collectableObject)
         {
             StackSignals.onStackCollectable?.Dispatch(collectableObject);
+            
         }
 
         private void OnCollectableInteract(GameObject collectableObject)
