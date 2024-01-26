@@ -7,7 +7,8 @@ namespace Runtime.Signals
     {
         public Signal onAddStack = new Signal();
         public Signal<GameObject> onStackCollectable = new Signal<GameObject>();
-        public Signal<GameObject> onInteractionObstacle = new Signal<GameObject>();
+        public Signal onInteractionObstacle = new Signal();
+        //public Signal onInteractionObstacleWithPlayer = new Signal();
         public Signal onInteractionCollectable = new Signal();
         public Signal<Vector2> onStackFollowPlayer = new Signal<Vector2>();
         public Signal<Vector2> onStackMover = new Signal<Vector2>();

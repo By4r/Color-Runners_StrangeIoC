@@ -28,7 +28,9 @@ namespace Runtime.Views.Player
 
         public UnityAction<Vector2> onSetPosAction = delegate { };
 
-        #endregion
+        public UnityAction onInteractionObstacle = delegate { };
+
+            #endregion
 
         #region Serialized Variables
 
@@ -62,6 +64,8 @@ namespace Runtime.Views.Player
 
         private readonly string _finish = "FinishArea";
         private readonly string _miniGame = "MiniGameArea";
+
+        private readonly string _obstacle = "Obstacle";
 
         [ShowInInspector] private PlayerColorTypes _colorType;
 
@@ -165,6 +169,13 @@ namespace Runtime.Views.Player
                 onStackCollectableAction?.Invoke(other.transform.gameObject);
                 
                 Debug.Log("COLLECTABLE");
+            }
+
+            if (other.CompareTag(_obstacle))
+            {
+                onInteractionObstacle?.Invoke();
+                
+                Debug.Log("HIT OBSTACLE");
             }
 
 

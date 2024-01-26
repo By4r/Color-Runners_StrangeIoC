@@ -16,6 +16,7 @@ TagManager:
   - GroundRed
   - GroundYellow
   - GroundBlue
+  - Obstacle
   layers:
   - Default
   - TransparentFX

@@ -36,6 +36,12 @@ namespace Runtime.Mediators.Player
             View.onCollectableInteract += OnCollectableInteract;
             View.onSetPosAction += SetStackPos;
             View.onStackCollectableAction += OnSendCollactableObject;
+            View.onInteractionObstacle += OnInterctionObstacle;
+        }
+
+        private void OnInterctionObstacle()
+        {
+            StackSignals.onInteractionObstacle?.Dispatch();
         }
 
         private void OnSendCollactableObject(GameObject collectableObject)
@@ -125,6 +131,8 @@ namespace Runtime.Mediators.Player
             View.onCollectableInteract -= OnCollectableInteract;
             View.onSetPosAction -= SetStackPos;
             View.onStackCollectableAction -= OnSendCollactableObject;
+            View.onInteractionObstacle -= OnInterctionObstacle;
+
         }
 
 

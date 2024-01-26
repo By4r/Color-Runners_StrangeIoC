@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using Rich.Base.Runtime.Abstract.View;
 using Runtime.Data.ValueObject;
+using Runtime.Root;
 using Runtime.Signals;
+using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -19,6 +21,8 @@ namespace Runtime.Views.Stack
 
         [SerializeField] internal GameObject collectableStickMan;
 
+        [ShowInInspector] private Transform _levelHolder;
+
         #endregion
 
         #region Private Variables
@@ -29,6 +33,12 @@ namespace Runtime.Views.Stack
 
         [Inject] public StackSignals StackSignals { get; set; }
         #endregion
+
+        protected override void Start()
+        {
+            base.Start();
+        }
+        
 
         public void SetStackData(StackData stackData)
         {
@@ -99,6 +109,36 @@ namespace Runtime.Views.Stack
                 _collectableStack.Add(collectableGameObject);
                 //_collectableManager.CollectableAnimRun();
 
+            }
+        }
+
+
+        internal void OnInteractObstacle()
+        {
+            if (_levelHolder == null)
+            {
+                _levelHolder = GameObject.Find("LevelHolder")?.transform;
+            }
+            
+            
+            StackLastItemRemove();
+
+        }
+        
+        private void StackLastItemRemove()
+        {
+            // Remove the last item from the stack
+            if (_collectableStack.Count > 0)
+            {
+                int last = _collectableStack.Count - 1;
+                GameObject lastItem = _collectableStack[last];
+                _collectableStack.RemoveAt(last);
+                _collectableStack.TrimExcess();
+
+                // Additional logic for removing the last item
+                lastItem.transform.SetParent(_levelHolder.transform.GetChild(0));
+
+                lastItem.SetActive(false);
             }
         }
     }
