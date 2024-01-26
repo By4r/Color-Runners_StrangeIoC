@@ -11,15 +11,7 @@ namespace Runtime.Views.Stack
 {
     public class StackView : RichView
     {
-        #region Public Variables
-        
-        public UnityAction onInteractCollect = delegate { };
-
-        #endregion
-        
         #region Serialized Variables
-
-        [SerializeField] internal GameObject collectableStickMan;
 
         [ShowInInspector] private Transform _levelHolder;
 
@@ -29,41 +21,30 @@ namespace Runtime.Views.Stack
 
         internal StackData _data;
         internal List<GameObject> _collectableStack = new List<GameObject>();
-        private List<GameObject> _inactiveCollectables = new List<GameObject>();
 
-        [Inject] public StackSignals StackSignals { get; set; }
         #endregion
 
         protected override void Start()
         {
             base.Start();
         }
-        
+
 
         public void SetStackData(StackData stackData)
         {
             _data = stackData;
         }
-        private void PrepareCollectableStickMen(int count)
-        {
-            for (int i = 0; i < count; i++)
-            {
-                GameObject collectable = Instantiate(collectableStickMan, this.transform);
-                collectable.SetActive(false);
-                _inactiveCollectables.Add(collectable); // Add the spawned object to the list
-            }
-        }
-        
-        
+
+
         internal void OnStackMove(Vector2 direction)
         {
-            transform.position = new Vector3(0, gameObject.transform.position.y, direction.y -1f); // +2f -1f
+            transform.position = new Vector3(0, gameObject.transform.position.y, direction.y - 1f); // +2f -1f
             if (gameObject.transform.childCount > 0)
             {
                 MoveStack(direction.x, _collectableStack);
             }
         }
-        
+
         public void MoveStack(float directionX, List<GameObject> collectableStack)
         {
             float direct = Mathf.Lerp(collectableStack[0].transform.localPosition.x, directionX,
@@ -82,21 +63,19 @@ namespace Runtime.Views.Stack
                 collectableStack[i].transform.localPosition = new Vector3(direct, pos.y, pos.z);
             }
         }
-        
-        
+
+
         internal void OnStackCollectable(GameObject collectableGameObject)
         {
             Debug.Log("ON INTERACTION COLLECTABLE WORKED !");
             AddStack(collectableGameObject);
         }
-        
+
         private void AddStack(GameObject collectableGameObject)
         {
             if (_collectableStack.Count <= 0)
             {
                 _collectableStack.Add(collectableGameObject);
-                //_collectableStack.Add(collectableGameObject);
-                //_collectableManager.CollectableAnimRun();
                 collectableGameObject.transform.SetParent(this.transform);
                 collectableGameObject.transform.localPosition = new Vector3(0, 1f, 0.335f); // y: 1f
             }
@@ -107,8 +86,6 @@ namespace Runtime.Views.Stack
                 newPos.z += _data.CollectableOffsetInStack;
                 collectableGameObject.transform.localPosition = newPos;
                 _collectableStack.Add(collectableGameObject);
-                //_collectableManager.CollectableAnimRun();
-
             }
         }
 
@@ -119,12 +96,11 @@ namespace Runtime.Views.Stack
             {
                 _levelHolder = GameObject.Find("LevelHolder")?.transform;
             }
-            
-            
-            StackLastItemRemove();
 
+
+            StackLastItemRemove();
         }
-        
+
         private void StackLastItemRemove()
         {
             // Remove the last item from the stack

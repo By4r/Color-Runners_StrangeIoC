@@ -19,7 +19,7 @@ namespace Runtime.Mediators.Stack
         [Inject] public IStackModel model { get; set; }
 
         [Inject] public StackSignals StackSignals { get; set; }
-        
+
 
         public override void OnRegister()
         {
@@ -27,8 +27,6 @@ namespace Runtime.Mediators.Stack
             StackSignals.onStackFollowPlayer.AddListener(StackView.OnStackMove);
             StackSignals.onStackCollectable.AddListener(StackView.OnStackCollectable);
             StackSignals.onInteractionObstacle.AddListener(StackView.OnInteractObstacle);
-
-            StackView.onInteractCollect += OnInteractCollect;
         }
 
 
@@ -39,14 +37,8 @@ namespace Runtime.Mediators.Stack
             StackSignals.onStackFollowPlayer.RemoveListener(StackView.OnStackMove);
             StackSignals.onStackCollectable.RemoveListener(StackView.OnStackCollectable);
             StackSignals.onInteractionObstacle.RemoveListener(StackView.OnInteractObstacle);
-
-            StackView.onInteractCollect -= OnInteractCollect;
         }
 
-        private void OnInteractCollect()
-        {
-            Debug.LogWarning("ON INTERACT COLLECT WORK !");
-        }
 
         public override void OnEnabled()
         {
