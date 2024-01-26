@@ -12,6 +12,7 @@ namespace Runtime.Signals
         public Signal onInteractionCollectable = new Signal();
         public Signal<Vector2> onStackFollowPlayer = new Signal<Vector2>();
         public Signal<Vector2> onStackMover = new Signal<Vector2>();
+        public Signal onIsLevelInitialize = new Signal();
         public Signal onUpdateType = new Signal();
         public Signal onInteractionConveyor = new Signal();
         public Signal onUpdateAnimation = new Signal();

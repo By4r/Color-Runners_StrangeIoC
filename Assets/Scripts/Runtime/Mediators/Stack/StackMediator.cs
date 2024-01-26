@@ -27,16 +27,17 @@ namespace Runtime.Mediators.Stack
             StackSignals.onStackFollowPlayer.AddListener(StackView.OnStackMove);
             StackSignals.onStackCollectable.AddListener(StackView.OnStackCollectable);
             StackSignals.onInteractionObstacle.AddListener(StackView.OnInteractObstacle);
+            StackSignals.onIsLevelInitialize.AddListener(StackView.OnIsLevelInitialize);
         }
 
 
         public override void OnRemove()
         {
             base.OnRemove();
-
             StackSignals.onStackFollowPlayer.RemoveListener(StackView.OnStackMove);
             StackSignals.onStackCollectable.RemoveListener(StackView.OnStackCollectable);
             StackSignals.onInteractionObstacle.RemoveListener(StackView.OnInteractObstacle);
+            StackSignals.onIsLevelInitialize.RemoveListener(StackView.OnIsLevelInitialize);
         }
 
 

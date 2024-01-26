@@ -90,14 +90,17 @@ namespace Runtime.Views.Stack
         }
 
 
-        internal void OnInteractObstacle()
+        internal void OnIsLevelInitialize()
         {
             if (_levelHolder == null)
             {
                 _levelHolder = GameObject.Find("LevelHolder")?.transform;
             }
+        }
+        
 
-
+        internal void OnInteractObstacle()
+        {
             StackLastItemRemove();
         }
 
